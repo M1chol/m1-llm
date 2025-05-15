@@ -8,8 +8,10 @@ class Tokenizer:
     def encode(self, text):
         preproc = re.split(r'([,.:;?_!"()\',.]|-|--|\s)', text)
         preproc = [i for i in preproc if i.strip()]
-        return [ self._stringToInt[token] for token in preproc if token ]
-    
+        preproc = [item if item in self._stringToInt else '<|unk|>' for item in preproc]
+        ids = [self._stringToInt[token] for token in preproc]
+        return ids
+
     def decode(self, tokenIds : list):
         text = " ".join([ self._intToString[tId] for tId in tokenIds ])
         return re.sub(r'\s+([,.!?"()\'])', r'\1', text)

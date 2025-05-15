@@ -16,12 +16,13 @@ with open('data.txt') as data:
 
     # Generating token id's
     allWords = sorted(set(preproc))
+    allWords.extend(['<|eof|>','<|unk|>'])
     vocab = { token: idx for idx, token in enumerate(allWords) }
     # print(list(vocab.items())[10:100])
 
     t = Tokenizer(vocab)
     # Create ids vector
-    ids = t.encode("Nagle wśród ciszy rozległ się huk jakby łoskot piorunu ponad głową kapitana")
+    ids = t.encode("Gdzieś w otchłani rozległ się huk jakby łoskot piorunu ponad głową kapitana")
     print(ids)
 
     # Decode ids vector
