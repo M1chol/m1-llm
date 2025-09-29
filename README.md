@@ -1,7 +1,10 @@
-# Tworzenie Dużego Modelu Językowego od zera
-Praca oparta o książke [Build a Large Language Model](https://www.amazon.com/Build-Large-Language-Model-Scratch/dp/1633437167) - Sebastian Raschka.
+# Tworzenie Dużego Modelu Językowego
+Praca oparta o książke [Build a Large Language Model - Sebastian Raschka](https://www.amazon.com/Build-Large-Language-Model-Scratch/dp/1633437167). Całość jest dostępna w również w [PDF](https://vlanc-lab.github.io/mu-nlp-course/teachings/Build_a_Large_Language_Model_(From_Scrat.pdf).)
 
 Poniżej znajduje się moje krótkie opracowanie kolejnych rozdziałów książki
+> [!NOTE]
+> Opracowanie rozdziały: 1, 2
+> 
 # Jak działa LLM?
 
 ## Stworzenie słownika  
