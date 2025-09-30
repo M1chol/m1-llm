@@ -45,13 +45,13 @@ Oto fragment przykładowego -> wej
 Oto fragment przykładowego wej -> ścia
 ```
 
-## Embedding
+## Osadzenie (ang. embedding)
 
 Następnie tokeny zamienia się na wektory liczbowe w przestrzeni wielowymiarowej. Na początku (przed trenowaniem) wartości tych wektorów są losowe. Podczas treningu, dzięki propagacji wstecznej, wektory ulegają optymalizacji. Z czasem słowa używane w podobnych kontekstach (np. *kot*, *pies*) dostają wektory, które znajdują się bliżej siebie w tej przestrzeni.
 
 Przykład: token `kot` może odpowiadać numerowi `120` w słowniku, a jego wektor początkowy wyglądać np. tak: `[1.2, 5.3]`.
 
-### Embedding pozycyjny
+### Osadzenie pozycyjne (ang. positional embedding)
 
 Problem: sam embedding tokenu nie niesie informacji o jego pozycji w zdaniu. Dlatego do wektorów tokenów dodajemy wektory pozycyjne (tzw. *positional embeddings*), które działają jak *offset* zależny od tego, na którym miejscu (indeksie) w zdaniu jest dany token.
 
@@ -77,3 +77,21 @@ Otrzymując wektor końcowy: `[2.3, 6.5], [3.3, 7.5], [4.3, 8.5]`
 
 Dzięki temu w ostatecznym wektorze mamy zakodowaną zarówno informację o tym, **jaki** to token, jak i o tym, **gdzie** występuje w zdaniu. To z kolei pozwala kolejnym warstwom modelu analizować tokeny względem siebie w kontekście całej sekwencji. 
 
+## Mechanizmy samouwagi (ang. self-attention)
+
+![Image](images/mechanizmy-uwagi.png)
+
+
+Dla czego dzielimy przez pierwiastek z d_k?? Po to aby uniknąć małych gradientów. Jeżeli nie podzielimy przez pierwiastek z d_k to małe gradienty będą wpływały (w bardzo nieznaczny sposób) na uczenia bardzo je spowalniając
+
+**Do przeczytania**
+
+https://transformer-circuits.pub/2021/framework/index.html
+
+**Do obejrzenia**
+
+https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
+
+https://www.youtube.com/watch?v=OFS90-FX6pg
