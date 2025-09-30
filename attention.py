@@ -1,19 +1,19 @@
 import torch
 
 class SelfAttention(torch.nn.Module):
-    def __init__(self, d_in, d_out) -> None:
+    def __init__(self, d_in, d_out, qkv_bias=False) -> None:
         super().__init__()
-        self.W_query = torch.nn.Parameter(torch.rand(d_in, d_out))
-        self.W_key = torch.nn.Parameter(torch.rand(d_in, d_out))
-        self.W_value = torch.nn.Parameter(torch.rand(d_in, d_out))
+        self.W_query = torch.nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_key= torch.nn.Linear(d_in, d_out, bias=qkv_bias)
+        self.W_value= torch.nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
         """
         Calculates the context vector for a given embedding 
         """
-        keys = x @ self.W_key
-        queries = x @ self.W_query
-        values = x @ self.W_value
+        keys = self.W_key(x)
+        queries = self.W_query(x)
+        values = self.W_value(x)
         attn_scores = queries @ keys.T
         attn_weights = torch.softmax(attn_scores / keys.shape[-1], dim=-1)
         context_vector = attn_weights @ values
@@ -21,6 +21,7 @@ class SelfAttention(torch.nn.Module):
 
 
 if __name__ == "__main__":
+    torch.manual_seed(789)
     inputs = torch.tensor(
         [[0.43, 0.15, 0.89],    # Your (x^1)
         [0.55, 0.87, 0.66],     # journey (x^2)
