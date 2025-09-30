@@ -78,6 +78,7 @@ Otrzymując wektor końcowy: `[2.3, 6.5], [3.3, 7.5], [4.3, 8.5]`
 Dzięki temu w ostatecznym wektorze mamy zakodowaną zarówno informację o tym, **jaki** to token, jak i o tym, **gdzie** występuje w zdaniu. To z kolei pozwala kolejnym warstwom modelu analizować tokeny względem siebie w kontekście całej sekwencji. 
 
 ## Mechanizmy samouwagi (ang. self-attention)
+TODO
 
 ![Image](images/mechanizmy-uwagi.png)
 
