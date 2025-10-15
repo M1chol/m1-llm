@@ -106,7 +106,7 @@ Oprócz problemu kolejności dochodzi problem kontekstu. Te same słowa np. zame
 
 Wynikiem działania mechanizmu uwagi jest macierz kontekstu. Jest ona kwadratowa i określa prawdopodobieństwo "istotności" każdego tokena z każdym.
 
-![img](/home/m1/Pictures/llm1.png)
+![img](https://github.com/M1chol/m1-llm/blob/main/images/macierz-kontekstu.png?raw=true)
 
 > [!NOTE]
 > Na rysunku wartości liczbowe są zaokrąglone.
@@ -115,7 +115,7 @@ Wynikiem działania mechanizmu uwagi jest macierz kontekstu. Jest ona kwadratowa
 
 Najprostszym mechanizmem jaki można teoretycznie zastosować jest analiza podobieństwa słów w zdaniu. Oto schemat operacji dla jednego tokena:
 
-![img](/home/m1/Pictures/llm2.png)
+![img](https://github.com/M1chol/m1-llm/blob/main/images/samo-uwaga1.png?raw=true)
 
 Ważne: wynikowy wektor kontekstu to jeden wiersz macierzy kontekstu. jest to wektor kontekstu dla konkretnego tokena (w tym przypadku tokena drugiego; oznaczenie `x^(2)`) i zawiera on sumę wszystkich "wpływów na uwagę" innych tokenów w zdaniu.
 
@@ -139,11 +139,11 @@ Zasadniczą różnicą względem wyżej omówionego prostego schematu uwagi jest
 
 **Jeszcze raz**. Przedstawione przykłady nie odzwierciedlają rzeczywistego działania mechanizmów samo-uwagi. Opisane przykłady to wyłącznie efekt który spodziewamy się zauważyć w wytrenowanym modelu. Prawdziwe zachowania wynikają jednak tylko i wyłącznie z zadania optymalizacji (propagacji wstecznej) i ich prawdziwe działanie nie jest jawne.
 
-![img](/home/m1/Pictures/llm4.png)
+![img](https://github.com/M1chol/m1-llm/blob/main/images/samouwaga2.png?raw=true)
 
 Warto omówić dodatkowy krok podczas normalizacji wartości uwagi. W poprzednim modelu wykorzystaliśmy jedynie funkcje softmax. Dodatkowym krokiem który teraz dodajemy jest podzielenie wartości uwagi przez pierwiastek z liczby wymiarów osadzonego wektora.
 
-Finalny wzór w zapisie macierzowym:![img](/home/m1/Pictures/llm6.png) 
+Finalny wzór w zapisie macierzowym:![img](https://github.com/M1chol/m1-llm/blob/main/images/wzor.png?raw=true) 
 
 ### Maskowana uwaga (causal attention)
 
@@ -154,7 +154,7 @@ Aby rozwiązać ten problem robimy dwie rzeczy.
 - usuwamy informacje o przyszłych tokenach
 - ponownie normalizujemy macierz - tak aby były w niej zawarte prawdopodobieństwa
 
-![img](/home/m1/Pictures/llm5.png) 
+![img](https://github.com/M1chol/m1-llm/blob/main/images/maskowanie.png?raw=true) 
 
 #### Dropout
 
@@ -168,7 +168,7 @@ TODO
 
 Pomimo że zasady według których tworzony jest model są dobrze znane. Sposób jego działania nie jest możliwy do interpretacji w kategoriach zrozumiałych przez człowieka (ang. model opacity). Efektem tego są zachowania nieprzewidziane (ang. emergent abilities) takie jak skuteczne realizowanie zadań z przykładów (Few-Shot), podążanie za instrukcjami (Instruction following) czy świetna umiejętności rozumienia i tłumaczenia wielu języków. Te wszystkie zachowania które przez nas są uznawane za "inteligencje" modelu nie są zaprogramowanym działaniem ale przypadkowym efektem uzupełniania zdań.
 
-![img](/home/m1/Pictures/llm3.png)
+![img](https://github.com/M1chol/m1-llm/blob/main/images/czarna-skrzynka.png?raw=true)
 
 Dla czego dzielimy przez pierwiastek z d_k?? Po to aby uniknąć małych gradientów. Jeżeli nie podzielimy przez pierwiastek z d_k to małe gradienty będą wpływały (w bardzo nieznaczny sposób) na uczenia bardzo je spowalniając
 
